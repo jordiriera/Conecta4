@@ -20,16 +20,24 @@ public class Conecta4 {
         Tauler aa;
         aa = new Tauler();
         
-      //  aa.prova();
+      /*
         aa.generarCaselles();
         aa.mostrarTauler();
-        aa.colocar(1, "O");
         aa.mostrarTauler();
-        aa.colocar(1, "O");
-        aa.colocar(2, "O");
-        aa.colocar(3, "O");
-        aa.colocar(4, "O");
+        aa.colocar(1, "F ");
+        aa.colocar(2, "O ");
+        aa.colocar(2, "F ");
+        aa.colocar(3, "O ");
+        aa.colocar(3, "O ");
+        aa.colocar(3, "F ");
+        aa.colocar(4, "O ");
+        aa.colocar(4, "O ");
+        aa.colocar(4, "F ");
+        aa.colocar(4, "F ");
+                
         aa.mostrarTauler();
+        */
+        aa.comprovaDiagonalD(4, 5,"O");
         
     }
     

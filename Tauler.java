@@ -14,6 +14,7 @@ public class Tauler {
     //  public int tauler [][] = new int [8][8];
     //int [][] tauler = new int[8][8];
     Casella tauler[][] = new Casella[8][7];
+    boolean victoria = false;
 
     public void generarCaselles() {
 
@@ -45,8 +46,16 @@ public class Tauler {
         }
         tauler[y][lloc].equipo = simbolo;
         tauler[y][lloc].ocupat();
-        if (comprovaH(lloc, y, simbolo)){
-            System.out.println("jiji");
+
+        if (comprovaH(lloc, y, simbolo)) {
+            System.out.println("Victòria per l'equip : " + simbolo);
+        }
+        if (comprovaV(lloc, y, simbolo)) {
+            System.out.println("Victòria per l'equip : " + simbolo);
+        }
+        if (comprovaDiagonalD(lloc, y, simbolo)){
+            System.out.println("Victòria per l'equip : " + simbolo);
+            
         }
     }
 
@@ -77,4 +86,70 @@ public class Tauler {
             return false;
         }
     }
+
+    public boolean comprovaV(int x, int y, String equip) {
+        int counter = 1;
+        for (int a = y + 1; a < 8; a++) {
+            if (tauler[a][x].equipo.equals(equip)) {
+
+                counter++;
+
+            } else {
+
+                break;
+            }
+        }
+        if (counter >= 4) {
+
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+    
+    public boolean comprovaDiagonalD(int x, int y, String equip){
+        int counter = 1;
+        
+        for ( int a = 1; a < 7; a++){
+            for ( int b = 1; b < 8; b++){
+                System.out.println("a");
+                if ( tauler[x][a].equipo.equals(equip)){
+                    counter ++;
+                    break;
+                }
+            }
+        }
+        if ( counter >= 4){
+            return true;
+            
+        }else{
+            return false;
+        }
+        
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
