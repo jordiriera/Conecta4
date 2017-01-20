@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package conecta.pkg4;
+import java.util.*;
 
 /**
  *
@@ -16,28 +17,36 @@ public class Conecta4 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        Scanner sc = new Scanner(System.in);
         Tauler aa;
         aa = new Tauler();
         
-      /*
+    
+          
         aa.generarCaselles();
         aa.mostrarTauler();
-        aa.mostrarTauler();
-        aa.colocar(1, "F ");
-        aa.colocar(2, "O ");
-        aa.colocar(2, "F ");
-        aa.colocar(3, "O ");
-        aa.colocar(3, "O ");
-        aa.colocar(3, "F ");
-        aa.colocar(4, "O ");
-        aa.colocar(4, "O ");
-        aa.colocar(4, "F ");
-        aa.colocar(4, "F ");
+        
+        while(aa.victoria == false){
+        
+          
                 
+        System.out.println("Torn de l'equip F");
+        int fitxaF = sc.nextInt();
+        aa.colocar(fitxaF, "F ");
         aa.mostrarTauler();
-        */
-        aa.comprovaDiagonalD(4, 5,"O");
+          
+            if(aa.victoria == false){
+                
+        
+        System.out.println("Torn de l'equip O");
+        int fitxaO = sc.nextInt();
+        aa.colocar(fitxaO, "O ");
+        aa.mostrarTauler();
+            }
+      }
+        aa.mostrarTauler();
+        
+        
         
     }
     

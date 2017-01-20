@@ -49,14 +49,22 @@ public class Tauler {
 
         if (comprovaH(lloc, y, simbolo)) {
             System.out.println("Victòria per l'equip : " + simbolo);
+            victoria = true;
         }
         if (comprovaV(lloc, y, simbolo)) {
             System.out.println("Victòria per l'equip : " + simbolo);
+            victoria = true;
         }
-        if (comprovaDiagonalD(lloc, y, simbolo)){
+        if (comprovaDiagonalD(lloc, y, simbolo)) {
             System.out.println("Victòria per l'equip : " + simbolo);
-            
+            victoria = true;
+
         }
+        /*if (comprovaDiagonalI(lloc, y, simbolo)) {
+            System.out.println("Victòria per l'equip : " + simbolo);
+            victoria = true;
+
+        }*/
     }
 
     public boolean comprovaH(int x, int y, String equip) {
@@ -107,49 +115,74 @@ public class Tauler {
             return false;
         }
     }
-    
-    public boolean comprovaDiagonalD(int x, int y, String equip){
+
+    public boolean comprovaDiagonalD(int x, int y, String equip) {
         int counter = 1;
-        
-        for ( int a = 1; a < 7; a++){
-            for ( int b = 1; b < 8; b++){
-                System.out.println("a");
-                if ( tauler[x][a].equipo.equals(equip)){
-                    counter ++;
-                    break;
-                }
+        int b = x;
+        for (int a = y + 1; a < 8; a++) {
+            b--;
+            if (tauler[a][b].equipo.equals(equip)) {
+                counter++;
+            } else {
+                break;
             }
         }
-        if ( counter >= 4){
+      /*  for (int a = y - 1; a > 0; a--) {
+            if (b<7){
+            if (x < 7) {b++;}
+        }
+            if (tauler[a][b].equipo.equals(equip)) {
+                counter++;
+            } else {
+                break;
+            }        
+    }*/
+        if (counter >= 4) {
             return true;
-            
-        }else{
+
+        } else {
             return false;
         }
-        
-    }
 
 }
+    
+    /*public boolean comprovaDiagonalI(int x, int y, String equip) {
+        int counter = 1;
+        int b = x;
+        for (int a = y + 1; a < 8; a++) {
+            if (b<7){
+            if (x < 7) {b++;}
+            
+            }
+            if (tauler[a][b].equipo.equals(equip)) {
+                counter++;
+            } else {
+                break;
+            }
+        }
+         for (int a = y - 1; a > 0; a--) {
+            if (b<7){
+            if (x < 7) {b++;}
+            
+            }
+            if (tauler[a][b].equipo.equals(equip)) {
+                counter++;
+            } else {
+                break;
+            }
+        }
+        
+        
+        
+        
+        if (counter >= 4) {
+            return true;
 
+        } else {
+            return false;
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
+        */
+    
+}
