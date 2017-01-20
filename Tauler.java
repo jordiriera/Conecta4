@@ -1,9 +1,13 @@
+package conecta4definitiu.pkg4;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package conecta.pkg4;
+
+
+import conecta.pkg4.*;
 
 /**
  *
@@ -27,10 +31,10 @@ public class Tauler {
     }
 
     public void mostrarTauler() {
-
+        System.out.println("0 1 2 3 4 5 6");
         for (int x = 0; x < 8; x++) {
             for (int y = 0; y < 7; y++) {
-                System.out.print(tauler[x][y].equipo);
+                System.out.print(tauler[x][y].equipo + " ");
             }
             System.out.println();
         }
@@ -38,39 +42,42 @@ public class Tauler {
 
     }
 
-    public void colocar(int lloc, String simbolo) {
+    public void colocar(int lloc, char simbol) {
         int y = 7;
 
         while (tauler[y][lloc].ocupada == true) {
             y--;
         }
-        tauler[y][lloc].equipo = simbolo;
+        tauler[y][lloc].equipo = simbol;
         tauler[y][lloc].ocupat();
 
-        if (comprovaH(lloc, y, simbolo)) {
-            System.out.println("Victòria per l'equip : " + simbolo);
+        if (comprovaH(lloc, y, simbol)) {
+            System.out.println("Victòria per l'equip : " + simbol);
             victoria = true;
         }
-        if (comprovaV(lloc, y, simbolo)) {
-            System.out.println("Victòria per l'equip : " + simbolo);
+        if (comprovaV(lloc, y, simbol)) {
+            System.out.println("Victòria per l'equip : " + simbol);
             victoria = true;
         }
-        if (comprovaDiagonalD(lloc, y, simbolo)) {
-            System.out.println("Victòria per l'equip : " + simbolo);
+        if (comprovaDiagonalD(lloc, y, simbol)) {
+            System.out.println("Victòria per l'equip : " + simbol);
             victoria = true;
 
         }
-        /*if (comprovaDiagonalI(lloc, y, simbolo)) {
-            System.out.println("Victòria per l'equip : " + simbolo);
+        if (comprovaDiagonalI(lloc, y, simbol)) {
+            System.out.println("Victòria per l'equip : " + simbol);
             victoria = true;
 
-        }*/
+        }
+        if (lloc >= 56){
+            System.out.println("¡EMPAT!");
+        }
     }
 
-    public boolean comprovaH(int x, int y, String equip) {
+    public boolean comprovaH(int x, int y, char equip) {
         int counter = 1;
         for (int a = x + 1; a < 7; a++) {
-            if (tauler[y][a].equipo.equals(equip)) {
+            if (tauler[y][a].equipo == equip) {
 
                 counter++;
 
@@ -79,7 +86,7 @@ public class Tauler {
             }
         }
         for (int a = x - 1; a >= 0; a--) {
-            if (tauler[y][a].equipo.equals(equip)) {
+            if (tauler[y][a].equipo == equip) {
 
                 counter++;
 
@@ -95,10 +102,10 @@ public class Tauler {
         }
     }
 
-    public boolean comprovaV(int x, int y, String equip) {
+    public boolean comprovaV(int x, int y, char equip) {
         int counter = 1;
         for (int a = y + 1; a < 8; a++) {
-            if (tauler[a][x].equipo.equals(equip)) {
+            if (tauler[a][x].equipo == equip ) {
 
                 counter++;
 
@@ -116,27 +123,29 @@ public class Tauler {
         }
     }
 
-    public boolean comprovaDiagonalD(int x, int y, String equip) {
+    public boolean comprovaDiagonalD(int x, int y, char equip) {
         int counter = 1;
         int b = x;
         for (int a = y + 1; a < 8; a++) {
-            b--;
-            if (tauler[a][b].equipo.equals(equip)) {
+            if (b > 0) {
+                b--;
+            }
+            if (tauler[a][b].equipo == equip) {
                 counter++;
             } else {
                 break;
             }
         }
-      /*  for (int a = y - 1; a > 0; a--) {
-            if (b<7){
-            if (x < 7) {b++;}
-        }
-            if (tauler[a][b].equipo.equals(equip)) {
+        for (int a = y - 1; a > 0; a--) {
+            if (b <= 5) {
+                b++;
+            }
+            if (tauler[a][b].equipo == equip) {
                 counter++;
             } else {
                 break;
-            }        
-    }*/
+            }
+        }
         if (counter >= 4) {
             return true;
 
@@ -144,37 +153,34 @@ public class Tauler {
             return false;
         }
 
-}
-    
-    /*public boolean comprovaDiagonalI(int x, int y, String equip) {
+    }
+
+    public boolean comprovaDiagonalI(int x, int y, char equip) {
         int counter = 1;
         int b = x;
         for (int a = y + 1; a < 8; a++) {
-            if (b<7){
-            if (x < 7) {b++;}
-            
+            if (b <= 5) {
+                b++;
             }
-            if (tauler[a][b].equipo.equals(equip)) {
+            if (tauler[a][b].equipo == equip ) {
                 counter++;
             } else {
                 break;
             }
         }
-         for (int a = y - 1; a > 0; a--) {
-            if (b<7){
-            if (x < 7) {b++;}
-            
+        for (int a = y - 1; a > 0; a--) {
+            if (b > 0 ) {
+                if (x > 0) {
+                    b--;
+                }
+
             }
-            if (tauler[a][b].equipo.equals(equip)) {
+            if (tauler[a][b].equipo == equip) {
                 counter++;
             } else {
                 break;
             }
         }
-        
-        
-        
-        
         if (counter >= 4) {
             return true;
 
@@ -182,7 +188,6 @@ public class Tauler {
             return false;
         }
 
-}
-        */
-    
+    }
+
 }

@@ -1,9 +1,13 @@
+package conecta4definitiu.pkg4;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package conecta.pkg4;
+
+
+import conecta.pkg4.*;
 import java.util.*;
 
 /**
@@ -32,7 +36,7 @@ public class Conecta4 {
                 
         System.out.println("Torn de l'equip F");
         int fitxaF = sc.nextInt();
-        aa.colocar(fitxaF, "F ");
+        aa.colocar(fitxaF, 'F');
         aa.mostrarTauler();
           
             if(aa.victoria == false){
@@ -40,7 +44,7 @@ public class Conecta4 {
         
         System.out.println("Torn de l'equip O");
         int fitxaO = sc.nextInt();
-        aa.colocar(fitxaO, "O ");
+        aa.colocar(fitxaO, 'O');
         aa.mostrarTauler();
             }
       }
